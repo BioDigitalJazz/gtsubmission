@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title> Sign up </title>
+  <link rel='stylesheet' type='text/css' href='./style.css'>
+</head>
+<body>
+  <div ng-app='app' ng-controller='appCtrl as app'>
+  	<div id='header'>
+	  <h1>Sign up</h1>
+	</div>
+	<div id='body'>
+	  <div id='content'>
+	  	<div id='inner-content-wrapper'>
+		  <div id='success-bar'>
+		  	<h3 ng-if='form.success'> Thanks for Signing up, {{form.name}}! </h3>
+		  </div>
+		  <span> Name: </span>
+		  <input type='text' ng-model='form.name' placeHolder='Enter your name...'>
+		  <span class='error' ng-if='notVerified.name'> Please enter your name</span>
+		  <br/>
+		  <span> Email: </span>
+		  <input type='text' ng-model='form.email' placeholder='email@example.com'>
+		  <span class='error' ng-if='notVerified.email'> Please enter a valid Email</span>
+		  <br/>
+		  <span> Password: </span>
+		  <input type='password' ng-model='form.password' placeholder='Enter your password'>
+		  <span class='error' ng-if='notVerified.password'> Passwords must contain at least 1 uppercase, 1 lowercase, 1 number, and 2 non-alphanumeric</span>
+		  <br/>
+		  <span> Confirm Password: </span>
+		  <input type='password' ng-model='form.passwordConf' placeholder='Confirm your password'>
+		  <span class='error' ng-if='notVerified.passwordConf'> Passwords must match</span>
+		  <br/>
+		  <br/>
+		  <span> Who told you about us?: </span> <span class='error' ng-if='notVerified.referers'> No, really.  We'd like to know </span>
+		  <br/>
+		  <input type='checkbox' ng-model='form.referers.allen'> Allen
+		  <br/>
+		  <input type='checkbox' ng-model='form.referers.betty'> Betty
+		  <br/>
+		  <input type='checkbox' ng-model='form.referers.charles'> Charles
+		  <br/>
+		  <input type='checkbox' ng-model='form.referers.other'>
+		  <input type='text' ng-model='otherReferer.name' placeholder='Other...'>
+		  <br/>
+		  <br/>
+		  <span> Account Type: </span> <span class='error' ng-if='notVerified.accountType'> Please select one </span>
+		  <br/>
+		  <input ng-repeat-start='type in accountTypes.options' type='radio' ng-model='form.accountType'  value='{{type}}'> 
+		  <span>{{type}}</span>
+		  <br/ ng-repeat-end>
+		  <br/>
+		  <input type='checkbox' ng-model='form.terms'>
+		  <span>I accept the terms and conditions.</span> <span class='error' ng-if='notVerified.terms'> Please accept the terms and conditions </span>
+		  <br/>
+		  <br/>
+		  <button ng-click='app.submit()'> Submit </button>
+		  <button ng-click='app.resetForm()'> Reset Form </button>
+		</div>
+	  </div>
+	  <div id='sidebar'>
+		sidebar
+	  </div>
+	</div>
+	<div id='footer'>
+	  footer
+	</div>
+  </div>
+  <script src='/node_modules/angular/angular.js'></script>
+  <script src='./index.js'></script>
+</body>
+</html>
+

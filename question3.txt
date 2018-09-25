@@ -1,0 +1,18 @@
+You have a "standard" web application on a single server running a web server and a relational database. The
+site's traffic grows to the point that the web application slows to a crawl and requests take several seconds to
+service.
+Describe how you would find the bottleneck(s) that are contributing to the slowdown and suggest some
+possible short term solutions to solving the problem(s).
+ Don't be too general (i.e. go into some detail)
+ The software/code running is whatever software/language you want (eg. LAMP stack)
+ Detail any assumptions you make
+
+
+
+
+Finding performance issues on a web server isn't something with which I have a lot of experience, but I do have quite a bit of experience in general troubleshooting.  I would start by trying to isolate the problem.  The problem is likeley with the database, but we can rule out the web server by creating a simple route that is computationally expensive and does not rely on the database.  If the response from that route is fast, then the web server is working as desired where the database is not involved.  Ideally there would be some benchmarks for the site to compare these results to.
+
+If the database does turn out the be the issue, then you'll want to figure out if the issue is with too many requests, too much data, or simply poorly structured data.  The latter of these possibilities really shouldn't be an issue if the site was performing well before the increase in traffic, however some indexing may still improve the situation.  If you benchmark a route that retrieves a single record by ID from a small table, it should happen quickly. If it doesn't then it is most likely an issue with too many requests coming in.  If that is the case, then you'll want to look into providing additional server and database resources.
+
+If the database is not the issue, then you most likely need to provide additional server resources, but it would also be worth performing some network diagnostics to make sure your network infrastructure can handle the increased traffic.
+

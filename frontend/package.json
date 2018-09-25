@@ -1,0 +1,15 @@
+{
+  "name": "frontend",
+  "version": "1.0.0",
+  "description": "Front End assessment exercise",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Dave Hyatt",
+  "license": "ISC",
+  "dependencies": {
+    "angular": "^1.7.4",
+    "express": "^4.16.3"
+  }
+}
